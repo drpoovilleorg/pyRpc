@@ -209,7 +209,7 @@ class RpcConnection(object):
                         logger.debug("Response received from server. Running callback.")
                         cbk(resp)
         except Exception:
-            if socks is None or zmq is None:
+            if None in (socks, zmq, poller):
                 pass
             else:
                 raise
